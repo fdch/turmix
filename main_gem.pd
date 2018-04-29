@@ -31,12 +31,29 @@
 #X msg 31 125 \; gemwin 0 \, destroy \, dimen 800 500 \, FSAA 4 \,
 color 1 1 1 1 \, buffer 1 \, view 0 0 20 \, perspec -1 1 -1 1 4 50
 , f 20;
-#X obj 22 42 r score-reset;
+#X obj 90 15 r score-reset;
+#X obj 90 39 route bang;
+#X obj 201 64 sel;
+#X msg 201 88 bang \; gemwin 0 \, destroy \;;
+#X obj 201 126 del 4000;
+#X obj 201 174 ggee/shell;
+#X obj 198 237 print;
+#X obj 258 235 print erro;
+#X msg 201 150 killall pd -9;
 #X connect 1 0 2 0;
 #X connect 2 0 3 0;
 #X connect 2 1 4 0;
 #X connect 3 0 0 0;
-#X connect 5 0 2 0;
+#X connect 5 0 6 0;
+#X connect 6 0 2 0;
+#X connect 6 1 7 0;
+#X connect 7 0 8 0;
+#X connect 7 1 2 0;
+#X connect 8 0 9 0;
+#X connect 9 0 13 0;
+#X connect 10 0 11 0;
+#X connect 10 1 12 0;
+#X connect 13 0 10 0;
 #X restore 18 72 pd controls;
 #N canvas 538 52 450 300 base 0;
 #X obj 24 82 gemhead;
@@ -72,7 +89,7 @@ color 1 1 1 1 \, buffer 1 \, view 0 0 20 \, perspec -1 1 -1 1 4 50
 #X connect 14 0 5 0;
 #X connect 15 0 14 0;
 #X restore 108 157 pd base;
-#N canvas 773 33 600 687 notes 0;
+#N canvas 680 33 600 687 notes 0;
 #X obj 11 108 gemhead;
 #X obj 398 122 gemwin;
 #X obj 340 122 s base;
@@ -348,7 +365,7 @@ color 1 1 1 1 \, buffer 1 \, view 0 0 20 \, perspec -1 1 -1 1 4 50
 -1 -1;
 #X obj 88 243 spigot 1;
 #X obj 161 58 r generate;
-#N canvas 549 246 684 661 notes 0;
+#N canvas 549 113 684 661 notes 0;
 #X obj 204 111 random 88;
 #X obj 208 209 t f b;
 #X obj 148 558 list store;
@@ -959,12 +976,12 @@ color 1 1 1 1 \, buffer 1 \, view 0 0 20 \, perspec -1 1 -1 1 4 50
 #X connect 8 0 5 0;
 #X restore 19 128 pd notes-txt;
 #X obj 301 22 r score-end;
-#X obj 155 90 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+#X obj 155 90 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
 1;
 #X obj 155 110 s spigot-rec;
 #X obj 156 22 hsl 128 15 0 100 0 0 empty score-event score-event -2
 -8 0 10 -262144 -1 -1 0 1;
 #X msg 152 44 \; reader 1;
-#X msg 301 46 \; reader 0 \; score-reset 0;
+#X msg 301 46 \; reader 0 \; score-reset 0 \;;
 #X connect 12 0 17 0;
 #X connect 13 0 14 0;

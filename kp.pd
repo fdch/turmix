@@ -151,10 +151,8 @@
 #X obj 215 633 >= 10;
 #X obj 215 657 change;
 #X obj 535 586 fd_sw 10 3;
-#X obj 611 622 t f f;
-#X obj 684 678 outlet;
-#X obj 683 621 sel;
-#X msg 683 645 0;
+#X obj 698 597 outlet;
+#X obj 602 639 t f f;
 #X connect 0 0 2 0;
 #X connect 1 0 0 0;
 #X connect 2 0 3 0;
@@ -272,8 +270,6 @@
 #X connect 89 0 90 0;
 #X connect 90 0 91 0;
 #X connect 91 0 84 1;
-#X connect 91 1 92 0;
-#X connect 92 0 83 0;
-#X connect 92 1 94 0;
-#X connect 94 0 95 0;
-#X connect 95 0 93 0;
+#X connect 91 1 93 0;
+#X connect 93 0 83 0;
+#X connect 93 1 92 0;
